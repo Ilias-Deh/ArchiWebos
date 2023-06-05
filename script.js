@@ -24,3 +24,68 @@ generateProject (projects)
 
 
 
+
+let buttons = document.querySelectorAll(".button")
+
+const buttonAll = document.querySelector("#buttonAll");
+
+
+
+
+buttonAll.addEventListener("click", function () {
+    
+    button_class(buttons);
+    buttonAll.classList.toggle("button-selected");
+    document.querySelector(".gallery").innerHTML = "";
+    generateProject(projects);
+});
+
+    
+const buttonObjects = document.querySelector("#buttonObjects");
+
+buttonObjects.addEventListener("click", function () {
+    button_class(buttons);
+    buttonObjects.classList.toggle("button-selected");
+    const projectFiltered = projects.filter(function (project) {
+        return project.category.name == "Objets"
+    });
+
+    document.querySelector(".gallery").innerHTML = "";
+    generateProject(projectFiltered);
+});
+
+
+const buttonApartments = document.querySelector("#buttonApartments");
+
+buttonApartments.addEventListener("click", function () {
+
+    button_class(buttons);
+    buttonApartments.classList.toggle("button-selected");
+    const projectFiltered = projects.filter(function (project) {
+        return project.category.name == "Appartements"
+    });
+    document.querySelector(".gallery").innerHTML = "";
+    generateProject(projectFiltered);
+});
+
+
+const buttonHotel = document.querySelector("#buttonHotel");
+
+buttonHotel.addEventListener("click", function () {
+
+    button_class(buttons);
+    buttonHotel.classList.toggle("button-selected");
+    const projectFiltered = projects.filter(function (project) {
+        return project.category.name == "Hotels & restaurants"
+    });
+    document.querySelector(".gallery").innerHTML = "";
+    generateProject(projectFiltered);
+});
+
+function button_class (buttons){
+
+    for (let position = 0; position < buttons.length ; position++) {
+            buttons[position].classList.remove("button-selected")
+        
+    }
+}
