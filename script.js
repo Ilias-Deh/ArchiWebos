@@ -1,32 +1,24 @@
-async function generateProject (){
-
 
 
 const answer = await fetch("http://localhost:5678/api/works")
-const projects = await answer.json() 
+const projects = await answer.json();
 
 
 
 
-for (let project = 0; project < projects.length; project++) {
 
-const gallery = document.querySelector(".gallery");
-const projectElement = document.createElement("figure");
-const imgElement = document.createElement("img");
-imgElement.src = projects[project].imageUrl;
-const titleElement = document.createElement("figcaption")
-titleElement.innerText = projects[project].title
-gallery.appendChild(projectElement)
-projectElement.appendChild(imgElement);
-projectElement.appendChild(titleElement);
+async function generateProject (projects){
 
+    
+    for (let project = 0; project < projects.length; project++) {
+    
+    const gallery = document.querySelector(".gallery");
 
-}
-}
-
-generateProject ()
-
-
+    gallery.innerHTML += `<figure><img src=${projects[project].imageUrl}><figcaption>${projects[project].title}</figcaption></figure>`;
+    }
+    }
+    
+generateProject (projects)
 
 
 
