@@ -1,7 +1,14 @@
 
 
-const answer = await fetch("http://localhost:5678/api/works")
+const answer = await fetch("http://localhost:5678/api/works", {
+
+method: "GET",
+headers: { "Content-Type": "application/json" },
+});
+
+
 const projects = await answer.json();
+
 
 
 

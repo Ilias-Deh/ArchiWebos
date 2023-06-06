@@ -257,6 +257,11 @@ margin: auto;
 	text-align: center;
 }
 
+#login-footer {
+
+	margin-top: 355px;
+}
+
 
 input[type="submit"]{
 	font-family: 'Syne';
