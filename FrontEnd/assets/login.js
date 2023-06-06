@@ -1,28 +1,59 @@
 
+    const formLogin = document.getElementById("form-login")
+    const formEmail = document.getElementById("email")
+    const formPassword = document.getElementById("password")
+    formLogin.addEventListener("submit", function (event) {
 
-const answer = await fetch('http://localhost:5678/api/users/login', {
+        event.preventDefault();
+        const loginData = {
+            email : event.target.querySelector("[name=email]").value,
+            password : event.target.querySelector("[name=password]").value,
+        };
 
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-});
-
-const projects = await answer.json();
-
-
-
-
-let email = document.getElementById("email")
-let password = document.getElementById("password")
-let buttonLogin = document.getElementById("buttonLogin")
+        const chargeUtile = JSON.stringify(loginData);
 
 
+        if (verifEmail(formEmail) & verifPassword(formPassword) == true){
+            const answer = fetch('http://localhost:5678/api/users/login', {
 
-buttonLogin.addEventListener("submit", function () {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: chargeUtile
+            });
+        }
+        else {
+            console.log("retry")
+        }
+       
+        });
+        
 
-    event.preventDefault();
+
+function verifEmail(email) {
+
+    let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+")
+    if (emailRegExp.test(email.value)) {
+        return true
+    }
+    else {
+        console.log("erreur email")
+    }
+
+}
+
+function verifPassword(password) {
+    let passwordRegExp = new RegExp("[a-z0-9._-]+")
+    if (passwordRegExp.test(password.value)) {
+        return true
+    }
+    else {
+        console.log("erreur mdp")
+    }
+}
 
 
-});
+
+
 
 
 
