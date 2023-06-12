@@ -1,53 +1,36 @@
-
-
 const answer = await fetch("http://localhost:5678/api/works", {
 
-method: "GET",
-headers: { "Content-Type": "application/json" },
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
 });
-
 
 const projects = await answer.json();
 
+async function generateProject(projects) {
 
 
-
-
-
-async function generateProject (projects){
-
-    
     for (let project = 0; project < projects.length; project++) {
-    
-    const gallery = document.querySelector(".gallery");
 
-    gallery.innerHTML += `<figure><img src=${projects[project].imageUrl}><figcaption>${projects[project].title}</figcaption></figure>`;
+        const gallery = document.querySelector(".gallery");
+        gallery.innerHTML += `<figure><img src=${projects[project].imageUrl}><figcaption>${projects[project].title}</figcaption></figure>`;
     }
-    }
-    
-generateProject (projects)
+}
 
-
-
-
-
+generateProject(projects)
 
 let buttons = document.querySelectorAll(".button")
 
 const buttonAll = document.querySelector("#buttonAll");
 
-
-
-
 buttonAll.addEventListener("click", function () {
-    
+
     button_class(buttons);
     buttonAll.classList.toggle("button-selected");
     document.querySelector(".gallery").innerHTML = "";
     generateProject(projects);
 });
 
-    
+
 const buttonObjects = document.querySelector("#buttonObjects");
 
 buttonObjects.addEventListener("click", function () {
@@ -89,10 +72,45 @@ buttonHotel.addEventListener("click", function () {
     generateProject(projectFiltered);
 });
 
-function button_class (buttons){
+function button_class(buttons) {
 
-    for (let position = 0; position < buttons.length ; position++) {
-            buttons[position].classList.remove("button-selected")
-        
+    for (let position = 0; position < buttons.length; position++) {
+        buttons[position].classList.remove("button-selected")
+
     }
 }
+
+const buttonLogout = document.querySelector("#buttonLogout")
+const buttonLogin = document.querySelector("#buttonLogin")
+const container = document.querySelector("header")
+const editor = document.querySelector(".editor")
+
+buttonLogout.addEventListener("click", function () {
+
+    buttonLogout.classList.add("undisplay");
+    window.localStorage.clear();
+    document.location.href = "login.html";
+});
+
+let isUserConnected = window.localStorage.getItem("isUserConnected")
+
+if (isUserConnected) {
+    container.classList.add("container")
+    buttonLogout.classList.remove("undisplay");
+    editor.classList.remove("undisplay");
+    buttonLogin.classList.add("undisplay");
+
+}
+else {
+    container.classList.remove("container")
+    buttonLogout.classList.add("undisplay");
+    editor.classList.add("undisplay");
+    buttonLogin.classList.remove("undisplay");
+}
+
+
+
+
+
+
+
