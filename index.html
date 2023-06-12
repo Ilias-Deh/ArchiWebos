@@ -3,6 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,18 +13,37 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script type="module" src="./assets/script.js"></script>
+	<script type="module" src="./assets/modale.js"></script>
 </head>
 <body>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-	<nav>
-		<ul>
-			<li><a href="index.html">projets</a></li>
-			<li>contact</li>
-			<li><a href="login.html">login</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
+	<div class="popupBackground">
+		<div class="popup">
+			<h3>Galerie Photo</h3>
+			<div class="galleryPopup">
+			</div>
+			<button id="buttonSend">ajouter une photo</button>
+			<a href="#">supprimer la galerie</a>
+			<a class="buttonExit">X</a>
+		</div>
+	</div>
+	<div class="editor undisplay">
+		<i class="fa-regular fa-pen-to-square"></i>
+		<p>mode édition</p>
+		<button id="buttonChange">publier les Changements</button>
+	</div>
+	<div class="headerFlex">
+		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">projets</a></li>
+				<li>contact</li>
+				<li><a id="buttonLogin" href="login.html">login</a></li>
+				<li ><a id="buttonLogout" class="undisplay">logout</a></li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</div>
 </header>
 <main>
 	<section id="introduction">
@@ -78,5 +100,6 @@
 		</ul>
 	</nav>
 </footer>
+
 </body>
 </html>
