@@ -84,6 +84,10 @@ const buttonLogout = document.querySelector("#buttonLogout")
 const buttonLogin = document.querySelector("#buttonLogin")
 const container = document.querySelector("header")
 const editor = document.querySelector(".editor")
+let categoriesbuttons = document.querySelector(".buttons")
+const modificationbuttons_1 = document.querySelector("#modification-1")
+const modificationbuttons_2 = document.querySelector("#modification-2")
+const modificationbuttons_3 = document.querySelector("#modification-3")
 
 buttonLogout.addEventListener("click", function () {
 
@@ -99,14 +103,12 @@ if (isUserConnected) {
     buttonLogout.classList.remove("undisplay");
     editor.classList.remove("undisplay");
     buttonLogin.classList.add("undisplay");
+    categoriesbuttons.classList.add("undisplay")
+    modificationbuttons_1.classList.remove("undisplay")
+    modificationbuttons_2.classList.remove("undisplay")
+    modificationbuttons_3.classList.remove("undisplay")
+}
 
-}
-else {
-    container.classList.remove("container")
-    buttonLogout.classList.add("undisplay");
-    editor.classList.add("undisplay");
-    buttonLogin.classList.remove("undisplay");
-}
 
 
 
