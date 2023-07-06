@@ -19,7 +19,6 @@ async function generateProject(projects) {
 generateProject(projects)
 
 let buttons = document.querySelectorAll(".button")
-
 const buttonAll = document.querySelector("#buttonAll");
 
 buttonAll.addEventListener("click", function () {
@@ -29,7 +28,6 @@ buttonAll.addEventListener("click", function () {
     document.querySelector(".gallery").innerHTML = "";
     generateProject(projects);
 });
-
 
 const buttonObjects = document.querySelector("#buttonObjects");
 
@@ -44,7 +42,6 @@ buttonObjects.addEventListener("click", function () {
     generateProject(projectFiltered);
 });
 
-
 const buttonApartments = document.querySelector("#buttonApartments");
 
 buttonApartments.addEventListener("click", function () {
@@ -57,7 +54,6 @@ buttonApartments.addEventListener("click", function () {
     document.querySelector(".gallery").innerHTML = "";
     generateProject(projectFiltered);
 });
-
 
 const buttonHotel = document.querySelector("#buttonHotel");
 
@@ -108,11 +104,3 @@ if (isUserConnected) {
     modificationbuttons_2.classList.remove("undisplay")
     modificationbuttons_3.classList.remove("undisplay")
 }
-
-
-
-
-
-
-
-
