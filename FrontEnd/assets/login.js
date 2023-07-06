@@ -1,5 +1,4 @@
 let isUserConnected = false;
-
 const formLogin = document.getElementById("form-login")
 const formEmail = document.getElementById("email")
 const formPassword = document.getElementById("password")
@@ -22,13 +21,18 @@ async function submit(payload) {
         headers: { "Content-Type": "application/json" },
         body: payload
     })
-    
+
     let serverResponse = await answer.status;
     if (serverResponse == 200) {
         isUserConnected = true
         let userData = await answer.json();
         window.localStorage.setItem("token", userData.token);
+        window.localStorage.setItem("isUserConnected", isUserConnected);
         document.location.href = "index.html";
+    }
+    else if(serverResponse == 404) {
+        isUserConnected = false
+        alert("Utilisateur Introuvable");
     }
     else {
         isUserConnected = false
@@ -43,8 +47,19 @@ function verifEmail(email) {
 
 function verifPassword(password) {
     let passwordRegExp = new RegExp("[a-zA-Z0-9._-]+")
-    return passwordRegExp.test(password.value) 
+    return passwordRegExp.test(password.value)
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
