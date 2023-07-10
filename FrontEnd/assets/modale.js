@@ -23,6 +23,16 @@ const answerProjects = await fetch("http://localhost:5678/api/works", {
 
 const projects = await answerProjects.json();
 
+async function generateProject(projects) {
+
+
+    for (let project = 0; project < projects.length; project++) {
+
+        const gallery = document.querySelector(".gallery");
+        gallery.innerHTML += `<figure><img src=${projects[project].imageUrl}><figcaption>${projects[project].title}</figcaption></figure>`;
+    }
+}
+
 async function generateProjectPopup(projects) {
     for (let i = 0; i < projects.length; i++) {
         const galleryPopup = document.querySelector(".galleryPopup");
@@ -77,7 +87,7 @@ if (
 })
 
 function previewImage() {
-    var image = document.getElementById("image").files
+    let image = document.getElementById("image").files
     if (image.length > 0) {
         var imageReader = new FileReader()
         imageReader.onload = function (event) {
@@ -156,6 +166,8 @@ buttonSend.addEventListener("click", function () {
                     alert("Problème serveur veuillez réessayer ultérieurement")
                 }
             })
+            document.querySelector(".gallery").innerHTML = "";
+            generateProject(projects)
     });
 
     let buttonExit = document.querySelector(".buttonExit")
@@ -175,6 +187,7 @@ let buttonsDelete = document.querySelectorAll(".buttonDelete");
 
 buttonsDelete.forEach(function (btn) {
     btn.addEventListener("click", function (event) {
+        event.preventDefault();
         let id = btn.id;
         getPictureId(projects, id)
         fetch(`http://localhost:5678/api/works/${pictureId}`, {
@@ -193,6 +206,8 @@ buttonsDelete.forEach(function (btn) {
                 }
             })
     })
+    document.querySelector(".gallery").innerHTML = "";
+    generateProject(projects)
 });
 
 function verifTitle(title) {
@@ -208,4 +223,3 @@ function getPictureId(projects, id) {
         }
         return pictureId
     }
-
