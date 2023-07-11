@@ -49,25 +49,3 @@ function verifPassword(password) {
     let passwordRegExp = new RegExp("[a-zA-Z0-9._-]+")
     return passwordRegExp.test(password.value)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
